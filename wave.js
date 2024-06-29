@@ -1,4 +1,5 @@
-function initWaveAnimation(firstWaveColor, secondWaveColor, waveAmplitude, waveFrequency, fillSpeed) {
+function initWaveAnimation(firstWaveColor, secondWaveColor, waveAmplitude, waveFrequency, fillSpeed, angleSpeed) {
+  // Creation,definition et ajout dans le dom du canvas
   const newCanvas = document.createElement("canvas");
   const newCanvasId = "waveCanvas" + document.querySelectorAll("canvas").length;
   newCanvas.id = newCanvasId;
@@ -59,7 +60,7 @@ function initWaveAnimation(firstWaveColor, secondWaveColor, waveAmplitude, waveF
   }
 
   function animate() {
-    angle += 1;
+    angle += angleSpeed;
     if (fillHeight < 2 * radius + 20) {
       fillHeight += fillSpeed; // Vitesse a laquelle il se remplit
     } else {
@@ -71,5 +72,5 @@ function initWaveAnimation(firstWaveColor, secondWaveColor, waveAmplitude, waveF
 
   animate();
 }
-initWaveAnimation('rgba(0,100,200,1)', 'rgba(0,150,255,1)', 20, 0.02, 0.5);
-initWaveAnimation('rgba(255,100,0,1)', 'rgba(255,150,0,1)', 25, 0.03, 2);
+initWaveAnimation('rgba(0,100,200,1)', 'rgba(0,150,255,1)', 20, 0.02, 0.5, 10);
+initWaveAnimation('rgba(255,100,0,1)', 'rgba(255,150,0,1)', 25, 0.03, 2, 10);
