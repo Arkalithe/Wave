@@ -30,7 +30,7 @@ function drawWave() {
     ctx.lineTo(centerX + x, centerY + y1);
   }
   ctx.lineTo(centerX + radius + 50, centerY + radius);
-  ctx.lineTo(centerX + radius - 50, centerY + radius);
+  ctx.lineTo(centerX - radius - 50, centerY + radius);
   ctx.closePath();
   ctx.fillStyle = 'rgba(0,100,200,1)';
   ctx.fill();
@@ -42,7 +42,7 @@ function drawWave() {
     ctx.lineTo(centerX + x, centerY + y2);
   }
   ctx.lineTo(centerX + radius + 50, centerY + radius);
-  ctx.lineTo(centerX + radius - 50, centerY + radius);
+  ctx.lineTo(centerX - radius - 50, centerY + radius);
   ctx.closePath();
   ctx.fillStyle = 'rgba(0,150,255,1)';
   ctx.fill();
@@ -53,7 +53,7 @@ function drawWave() {
 function animate() {
   angle += 1;
   if (fillHeight < 2 * radius + 20) {
-    fillHeight += 0.5;
+    fillHeight += 0.5; // Vitesse a laquelle il se remplit
   } else {
     fillHeight = 0;
   }
