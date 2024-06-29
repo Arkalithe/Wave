@@ -1,4 +1,4 @@
-function initWaveAnimation() {
+function initWaveAnimation(firstWaveColor, secondWaveColor, waveAmplitude, waveFrequency, fillSpeed) {
   const newCanvas = document.createElement("canvas");
   const newCanvasId = "waveCanvas" + document.querySelectorAll("canvas").length;
   newCanvas.id = newCanvasId;
@@ -34,25 +34,25 @@ function initWaveAnimation() {
     //Vague en premier Plan
     ctx.beginPath();
     for (let x = -radius - 50; x <= radius + 50; x++) {
-      const y1 = Math.sin((x + angle) * 0.02) * 20 + radius - fillHeight;
+      const y1 = Math.sin((x + angle) * waveFrequency) * waveAmplitude + radius - fillHeight;
       ctx.lineTo(centerX + x, centerY + y1);
     }
     ctx.lineTo(centerX + radius + 50, centerY + radius);
     ctx.lineTo(centerX - radius - 50, centerY + radius);
     ctx.closePath();
-    ctx.fillStyle = "rgba(0,100,200,1)";
+    ctx.fillStyle = firstWaveColor; // format "rgba(x,x,x,x)"
     ctx.fill();
 
     //Vague en deuxieme plan
     ctx.beginPath();
     for (let x = -radius - 50; x <= radius + 50; x++) {
-      const y2 = Math.sin((x - angle) * 0.02) * 20 + radius - fillHeight;
+      const y2 = Math.sin((x - angle) * waveFrequency) * waveAmplitude + radius - fillHeight;
       ctx.lineTo(centerX + x, centerY + y2);
     }
     ctx.lineTo(centerX + radius + 50, centerY + radius);
     ctx.lineTo(centerX - radius - 50, centerY + radius);
     ctx.closePath();
-    ctx.fillStyle = "rgba(0,150,255,1)";
+    ctx.fillStyle = secondWaveColor; // format"rgba(x,x,x,x)"
     ctx.fill();
 
     ctx.restore();
@@ -61,7 +61,7 @@ function initWaveAnimation() {
   function animate() {
     angle += 1;
     if (fillHeight < 2 * radius + 20) {
-      fillHeight += 0.5; // Vitesse a laquelle il se remplit
+      fillHeight += fillSpeed; // Vitesse a laquelle il se remplit
     } else {
       fillHeight = 0;
     }
@@ -71,5 +71,5 @@ function initWaveAnimation() {
 
   animate();
 }
-initWaveAnimation();
-initWaveAnimation();
+initWaveAnimation('rgba(0,100,200,1)', 'rgba(0,150,255,1)', 20, 0.02, 0.5);
+initWaveAnimation('rgba(255,100,0,1)', 'rgba(255,150,0,1)', 25, 0.03, 2);
