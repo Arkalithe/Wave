@@ -1,4 +1,5 @@
-const canvas = document.getElementById("waveCanvas");
+function initWaveAnimation (canvasId) {
+const canvas = document.getElementById(canvasId);
 const ctx = canvas.getContext("2d");
 const width = canvas.width;
 const height = canvas.height;
@@ -62,3 +63,6 @@ function animate() {
 }
 
 animate();
+}
+initWaveAnimation('waveCanvas1')
+initWaveAnimation('waveCanvas2')
